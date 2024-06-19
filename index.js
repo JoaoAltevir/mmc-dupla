@@ -17,7 +17,7 @@ process.stdin.on("data", function (data){
 //definindo numA sempre como o menor número
     } else if(numA > numB){
         let aux = numB;
-        numB = numA;
+        numB = numA;//eu queria ter mudado pra maior e menor q era mais facil de ver mas não vou mexer
         numA = aux;
 //-------------------------------------------------
 //processo mmc;
@@ -26,10 +26,26 @@ process.stdin.on("data", function (data){
         while(!(mmc % numA == 0 && mmc % numB == 0)){
             mmc++;
         }
-        pronto = 1
+        pronto = 1;
+    }
+//-------------------------------------------------
+//processo MDC
+    let mdc;
+    if(numA > numB){
+        let maior = numA;
+    } else{
+        maior = numB;
+        menor = numA;
+    }
+    for(let i = 1; i <= menor; i++){
+        if(menor % i === 0 && maior % i === 0){
+            mdc = i;
+        }
     }
 //para aparecer apenas quando terminar os processos
     if(pronto == 1){
         console.log("O mmc entre", numA, "e", numB, "=", mmc);
+        console.log("O mdc entre", numA, "e", numB, "=", mdc);
+        process.exit();
     }
 })
